@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'user.apps.UserConfig',
+    'services.apps.ServicesConfig',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # auth user group
 AUTH_USER_MODEL = 'user.User'
+
+# For RabbitMQ
+CELERY_BROKER_URL = 'amqp://localhost'
+# CELERY_RESULT_BACKEND = 'amqp://[ipaddress]'
+
+# Celery Data Format
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
