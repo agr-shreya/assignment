@@ -38,6 +38,13 @@ class ScheduleConfig(models.Model):
     cadence_time = models.DateTimeField()
     frequency = EnumChoiceField(
         ScheduleFrequency, default=ScheduleFrequency.ONCE)
-    limit = models.IntegerField()
+    limit = models.IntegerField(default=1)
     is_active = models.BooleanField(default=True)
-    last_exec_date = models.DateTimeField()
+    next_exec_date = models.DateTimeField(auto_now_add=True, blank=True)
+    last_exec_date = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self) -> str:
+        service_type = self.service_type.value
+        is_active = 'active' if self.is_active else 'completed'
+
+        return '%s - %s: %s' % (service_type, self.service_modal_id, is_active)
