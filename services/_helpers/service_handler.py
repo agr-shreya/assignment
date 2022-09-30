@@ -44,7 +44,7 @@ class Service:
             return datetime.now()
 
 
-class Schedule:
+class Scheduler:
     success_status = [200]
 
     def __init__(self, obj: ScheduleConfig) -> None:

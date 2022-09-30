@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
 
     # custom apps
     'user.apps.UserConfig',
     'services.apps.ServicesConfig',
+    'history.apps.HistoryConfig'
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,16 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_ALWAYS_EAGER = True
+
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULE = {
+    'run-every-2-min': {
+        'task': 'services.tasks.check_schedule',
+        'schedule': 120.0,
+        # 'args': (16, 16),
+        'options': {
+            'expires': 60.0,
+        },
+    },
+}
