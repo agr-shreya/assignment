@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/__pycache__/": true,
+        "**/*.pyc": {
+            "when": "$(basename).py"
+        }
+    },
+    "window.zoomLevel": 0.5,
+    "editor.fontSize": 14,
+    "files.autoSave": "afterDelay",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "autopep8",
+    "python.languageServer": "Pylance",
+}
