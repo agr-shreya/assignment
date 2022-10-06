@@ -65,7 +65,7 @@ class MessageAdmin(admin.ModelAdmin):
 class ScheduleConfigAdmin(admin.ModelAdmin):
     model = ScheduleConfigModel
 
-    readonly_fields = ('next_exec_date', 'last_exec_date', )
+    readonly_fields = ('next_schedule_time', 'last_schedule_time', )
     fieldsets = ((
         'Service Details', {
             'fields': ('service_type', 'service_model_id')
@@ -74,11 +74,12 @@ class ScheduleConfigAdmin(admin.ModelAdmin):
             'fields': ('running_time', 'cadence', 'frequency', 'is_active'),
         }), (
         None, {
-            'fields': ('next_exec_date', 'last_exec_date'),
+            'fields': ('next_schedule_time', 'last_schedule_time'),
         }),
     )
 
 
 # Register your models here.
 admin.site.register(EmailModel, EmailAdmin)
+admin.site.register(MessageModel, MessageAdmin)
 admin.site.register(ScheduleConfigModel, ScheduleConfigAdmin)

@@ -8,6 +8,7 @@ class ServiceType(Enum):
 
 class ServiceStatus(Enum):
     DELIVERED = "Delivered"
+    PENDING = "Pending"
     FAILED = "Failed"
 
 

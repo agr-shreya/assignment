@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Log
+from .models import LogModel
 
 
 class LogsAdmin(admin.ModelAdmin):
-    model = Log
+    model = LogModel
     list_display = ('id', 'service_type', 'service_model_id',
                     'service_schedule', 'sent_date', 'status', 'note')
     readonly_fields = ('service_type', 'service_model_id',
@@ -11,4 +11,4 @@ class LogsAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Log, LogsAdmin)
+admin.site.register(LogModel, LogsAdmin)

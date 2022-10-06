@@ -6,11 +6,11 @@ from service._helpers.constants import ServiceType, ServiceStatus
 
 
 # Create your models here.
-class Log(models.Model):
+class LogModel(models.Model):
     service_type = EnumChoiceField(ServiceType)
     service_model_id = models.IntegerField()
     service_schedule = models.ForeignKey(
         ScheduleConfigModel, on_delete=models.CASCADE)
     sent_date = models.DateTimeField(auto_now_add=True)
     status = EnumChoiceField(ServiceStatus)
-    note = models.CharField(max_length=200, blank=True, null=True)
+    note = models.CharField(max_length=1000, blank=True, null=True)
